@@ -8,7 +8,10 @@
     isAdult() {return this.age>18}
   }
 
-  display(person.isAdult());
 
-
+  display(Object.keys(person));
+  display("=====================");
+  for(let propertyName in person){
+    display(propertyName)
+  }
 })();
