@@ -2,23 +2,26 @@
 (function() {
 
   let person = {
-    firstname : "Mohamed",
-    lastname : "El Kashef",
-    age: 17,
-    isAdult() {return this.age>18}
-  }
+    firstName : "John",
+    lastName : "Doe",
+  };
 
-  // Une fonction constructeur est une fonction normale qui fait référence à this.
-  // this est le contexte dans lequel la fonction s'éxécute.
-  function Person(firstName,lastName, age){
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.age = age;
-    this.isAdult =function() {return this.age > 18; }
-  }
+  Object.defineProperty(person , 'fullName', {
+          get: function(){
+            return this.firstName + ' ' + this.lastName;
+          },
+          set: function(value){
+            let parts = value.split(" ");
+            this.firstName = parts[0];
+            this.lastName = parts[1];
+          }
+  });
 
-  // new crée implicitement un Object et l'assigne à this pour qu'il devienne le contexte d'exécution de la fonction constructeur
-  display(new Person("Mo", "El Kashef",36).isAdult());
-  display(new Person("Dahlia", "El Kashef",5).isAdult());
+  person.fullName = "Jim Cooper";
+
+  display(person.firstName);
+  display(person.lastName);
+  display(person.fullName);
+
 
 })();
