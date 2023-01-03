@@ -9,9 +9,13 @@
   }
 
 
-  display(Object.keys(person));
-  display("=====================");
-  for(let propertyName in person){
-    display(propertyName)
+  let healthStats = {
+    height : 174,
+    weight : 78
   }
+
+  display(Object.assign({},person,healthStats)); // Toujours utiliser un objet vide en premier paramètre pour préserver l'immuabilité
+
+  display(person);
+
 })();
