@@ -3,9 +3,12 @@
 
   let person = {
     firstname : "Mohamed",
-    lastname : "El Kashef"
+    lastname : "El Kashef",
+    age: 29,
+    isAdult : function (){return this.age>18}
   }
 
-  display(person.firstname);
+  display(person.isAdult());
+
 
 })();
