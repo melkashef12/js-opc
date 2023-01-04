@@ -11,13 +11,10 @@
 
   sofia.__proto__.age = 27;
 
-  //La prototype de la fonction constructeur est la même instance
-  //que les prototypes de chaque objet crée avec cette fonction
-  display(Person.prototype === jim.__proto__);
-  display(sofia.__proto__ === jim.__proto__);
+  jim.age = 18;
 
-  display(Person.prototype);
-  display(jim.__proto__);
-  display(sofia.__proto__);
+  display(jim.age);
+  display(jim.__proto__.age);
+  display(jim.hasOwnProperty('age'));
 
 })();
