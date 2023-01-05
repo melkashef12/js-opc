@@ -22,6 +22,8 @@
     }
   }
 
+  Object.defineProperty(Person.prototype, "fullName", {enumerable : true})
+
   let jim = new Person("Jim", "Cooper", 29);
   display(jim);
   display(jim.isAdult());
