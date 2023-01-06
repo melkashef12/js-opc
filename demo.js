@@ -8,6 +8,8 @@
       this.age = age;
     }
 
+    static adultAge = 18;
+
     isAdult(){
       return this.age > 18;
     }
@@ -48,5 +50,7 @@
   jim.enroll("PS201");
   jim.enroll("MD101");
   display(jim.getCourses());
+
+  display(Person.adultAge);
 
 })();
