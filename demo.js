@@ -1,20 +1,44 @@
-'use strict'; 
+'use strict';
 (function() {
 
-  function Person(firstName, lastName){
-      this.firstName = firstName;
-      this.lastName = lastName;
+  function Person(firstName, lastName, age){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    Object.defineProperty(Person.prototype,'fullName',{
+      enumerable : true,
+      get : function(){
+        return this.firstName + ' ' + this.lastName;
+      }
+    });
   }
 
-  let jim = new Person('jim','cooper');
-  let sofia = new Person ('sofia','brown');
 
-  sofia.__proto__.age = 27;
 
-  jim.age = 18;
+  function Student(firstName, lastName, age){
+    Person.call(this,firstName,lastName,age);
+    this.enrolledCourses = [];
 
-  display(jim.age);
-  display(jim.__proto__.age);
-  display(jim.hasOwnProperty('age'));
+    this.enroll = function(courseId){
+      this.enrolledCourses.push(courseId);
+    }
+
+    this.getCourses = function(){
+      return this.fullName + "'s enrolled courses are: "+this.enrolledCourses.join(', ');
+    }
+  }
+
+  Student.prototype = Object.create(Person.prototype);
+  Student.prototype.constructor = Student;
+
+  let jim = new Student('jim', 'Copper',29);
+
+  jim.enroll('CS205');
+  jim.enroll('MA101');
+  jim.enroll('PS101');
+
+  display(jim.getCourses());
+
+
 
 })();
