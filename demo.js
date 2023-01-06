@@ -22,10 +22,31 @@
     }
   }
 
+  class Student extends Person {
+
+    constructor(firstName, lastName, age) {
+      super(firstName,lastName,age);
+      this.enrolledCourses = [];
+    }
+
+    enroll(courseId) {
+      this.enrolledCourses.push(courseId);
+    }
+
+    getCourses(){
+      return this.fullName +"'s enrolled courses are " + this.enrolledCourses.join(',' );
+    }
+  }
+
   Object.defineProperty(Person.prototype, "fullName", {enumerable : true})
 
-  let jim = new Person("Jim", "Cooper", 29);
+  let jim = new Student("Jim", "Cooper", 29);
   display(jim);
   display(jim.isAdult());
+
+  jim.enroll("PS101");
+  jim.enroll("PS201");
+  jim.enroll("MD101");
+  display(jim.getCourses());
 
 })();
